@@ -35,7 +35,7 @@ local theme = lush(function()
     VertSplit    { fg = hsl("#221f22") }, -- the column separating vertically split windows
     Folded       { fg = hsl("#cdcdcd"), bg = hsl("#444444") }, -- line used for closed folds
     FoldColumn   { Folded }, -- 'foldcolumn'
-    SignColumn   { bg = hsl("#363636") }, -- column where |signs| are displayed
+    SignColumn   { bg = Normal.bg }, -- column where |signs| are displayed
     IncSearch    { bg = hsl("#363636") }, -- 'incsearch' highlighting; also used for the text replaced with ":s///c"
     Substitute   { IncSearch }, -- |:substitute| replacement text highlighting
     LineNr       { fg = hsl("#5b595c"), bg = Normal.bg }, -- Line number for ":number" and ":#" commands, and when 'number' or 'relativenumber' option is set.
@@ -46,6 +46,7 @@ local theme = lush(function()
     -- MsgSeparator { }, -- Separator for scrolled messages, `msgsep` flag of 'display'
     -- MoreMsg      { }, -- |more-prompt|
     -- NonText      { }, -- '@' at the end of the window, characters from 'showbreak' and other characters that do not really exist in the text (e.g., ">" displayed when a double-wide character doesn't fit at the end of the line). See also |hl-EndOfBuffer|.
+    -- Normal       { fg = hsl('#fcfcfa'), bg = hsl('#2d2a2e') }, -- normal text
     Normal       { fg = hsl('#fcfcfa'), bg = hsl('#2d2a2e') }, -- normal text
     NormalFloat  { Normal }, -- Normal text in floating windows.
     NormalNC     { Normal }, -- normal text in non-current windows
