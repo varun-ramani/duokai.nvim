@@ -22,24 +22,24 @@ local theme = lush(function()
     lCursor      { Cursor }, -- the character under the cursor when |language-mapping| is used (see 'guicursor')
     CursorIM     { Cursor }, -- like Cursor, but used when in IME mode |CursorIM|
     CursorColumn { bg = hsl("#363636") }, -- Screen-column at the cursor, when 'cursorcolumn' is set.
-    CursorLine   { bg = hsl("#363636") }, -- Screen-line at the cursor, when 'cursorline' is set.  Low-priority if foreground (ctermfg OR guifg) is not set.
+    CursorLine   { bg = Normal.bg }, -- Screen-line at the cursor, when 'cursorline' is set.  Low-priority if foreground (ctermfg OR guifg) is not set.
     Directory    { fg = hsl("#cddfef") }, -- directory names (and other special names in listings)
-    DiffAdd      { fg = hsl("#242424"), bg = hsl("#88ff88") }, -- diff mode: Added line |diff.txt|
-    DiffChange   { fg = hsl("#242424"), bg = hsl("#ffdd88")}, -- diff mode: Changed line |diff.txt|
-    DiffDelete   { fg = hsl("#242424"), bg = hsl("#ff8888")}, -- diff mode: Deleted line |diff.txt|
+    DiffAdd      { fg = hsl('#2d2a2e'), bg = hsl("#a9dc76") }, -- diff mode: Added line |diff.txt|
+    DiffChange   { fg = hsl("#2d2a2e"), bg = hsl("#fc9867")}, -- diff mode: Changed line |diff.txt|
+    DiffDelete   { fg = hsl("#2d2a2e"), bg = hsl("#ff6188")}, -- diff mode: Deleted line |diff.txt|
     DiffText     { DiffChange }, -- diff mode: Changed text within a changed line |diff.txt|
     EndOfBuffer  { fg = hsl("#888888") }, -- filler lines (~) after the end of the buffer.  By default, this is highlighted like |hl-NonText|.
     TermCursor   { Cursor }, -- cursor in a focused terminal
     TermCursorNC { Cursor }, -- cursor in an unfocused terminal
     ErrorMsg     { fg = hsl("#ffffff"), bg = hsl("#ff8888") }, -- error messages on the command line
-    VertSplit    { fg = hsl("#bbaaaa") }, -- the column separating vertically split windows
+    VertSplit    { fg = hsl("#221f22") }, -- the column separating vertically split windows
     Folded       { fg = hsl("#cdcdcd"), bg = hsl("#444444") }, -- line used for closed folds
     FoldColumn   { Folded }, -- 'foldcolumn'
     SignColumn   { bg = hsl("#363636") }, -- column where |signs| are displayed
-    IncSearch    { bg = hsl("#444444") }, -- 'incsearch' highlighting; also used for the text replaced with ":s///c"
+    IncSearch    { bg = hsl("#363636") }, -- 'incsearch' highlighting; also used for the text replaced with ":s///c"
     Substitute   { IncSearch }, -- |:substitute| replacement text highlighting
-    LineNr       { fg = hsl("#bcbcbc"), bg = hsl("#363636") }, -- Line number for ":number" and ":#" commands, and when 'number' or 'relativenumber' option is set.
-    CursorLineNr { fg = hsl("#dddddd"), bg = hsl("#363636") }, -- Like LineNr when 'cursorline' or 'relativenumber' is set for the cursor line.
+    LineNr       { fg = hsl("#5b595c"), bg = Normal.bg }, -- Line number for ":number" and ":#" commands, and when 'number' or 'relativenumber' option is set.
+    CursorLineNr { fg = hsl("#c1c0c0"), bg = hsl("#363636") }, -- Like LineNr when 'cursorline' or 'relativenumber' is set for the cursor line.
     MatchParen   { gui = "underline" }, -- The character under the cursor or just before it, if it is a paired bracket, and its match. |pi_paren.txt|
     ModeMsg      { CursorLineNr }, -- 'showmode' message (e.g., "-- INSERT -- ")
     -- MsgArea      { }, -- Area for messages and cmdline
@@ -79,17 +79,17 @@ local theme = lush(function()
     -- default,
     -- Uncomment and edit if you want more specific syntax highlighting.
 
-    Constant       { fg = hsl("#de8ff6") }, -- (preferred) any constant
-    String         { fg = hsl("#c3fead") }, --   a string constant: "this is a string"
-    Character      { String }, --  a character constant: 'c', '\n'
-    Number         { fg = hsl("#8eafff") }, --   a number constant: 234, 0xff
+    Constant       { fg = hsl("#ab9df2") }, -- (preferred) any constant
+    String         { fg = hsl("#ffd866") }, --   a string constant: "this is a string"
+    Character      { fg = String.fg.lighten(50) }, --  a character constant: 'c', '\n'
+    Number         { Constant }, --   a number constant: 234, 0xff
     Boolean        { Constant }, --  a boolean constant: TRUE, false
     Float          { Number }, --    a floating point constant: 2.3e10
 
-    Identifier     { fg = hsl("#eefeee") }, -- (preferred) any variable name
-    Function       { fg = hsl("#a7aeff") }, -- function name (also: methods for classes)
+    Identifier     { fg = hsl('#78dce8') }, -- (preferred) any variable name
+    Function       { fg = hsl("#a9dc76") }, -- function name (also: methods for classes)
 
-    Statement      { fg = hsl("#cdacfc") }, -- (preferred) any statement
+    Statement      { fg = hsl('#ff6188') }, -- (preferred) any statement
     -- Conditional    { }, --  if, then, else, endif, switch, etc.
     -- Repeat         { }, --   for, do, while, etc.
     -- Label          { }, --    case, default, etc.
@@ -97,13 +97,13 @@ local theme = lush(function()
     -- Keyword        { }, --  any other keyword
     -- Exception      { }, --  try, catch, throw
 
-    PreProc        { fg = hsl("#ffcbfb") }, -- (preferred) generic Preprocessor
+    PreProc        { fg = Statement.fg.lighten(20) }, -- (preferred) generic Preprocessor
     -- Include        { }, --  preprocessor #include
     -- Define         { }, --   preprocessor #define
     -- Macro          { }, --    same as Define
     -- PreCondit      { }, --  preprocessor #if, #else, #endif, etc.
 
-    Type           { fg = hsl("#f4af6f") }, -- (preferred) int, long, char, etc.
+    Type           { fg = hsl('#78dce8').darken(20) }, -- (preferred) int, long, char, etc.
     -- StorageClass   { }, -- static, register, volatile, etc.
     -- Structure      { }, --  struct, union, enum, etc.
     -- Typedef        { }, --  A typedef
@@ -122,7 +122,7 @@ local theme = lush(function()
     -- ("Ignore", below, may be invisible...)
     -- Ignore         { }, -- (preferred) left blank, hidden  |hl-Ignore|
 
-    Error          { fg = hsl("#ff8888") }, -- (preferred) any erroneous construct
+    Error          { fg = hsl('#ff6188')}, -- (preferred) any erroneous construct
 
     Todo           { fg = hsl("#eeeee0") }, -- (preferred) anything that needs extra attention; mostly the keywords TODO FIXME and XXX
 
@@ -135,9 +135,9 @@ local theme = lush(function()
     -- LspReferenceWrite                    { }, -- used for highlighting "write" references
 
     LspDiagnosticsDefaultError           { Error }, -- Used as the base highlight group. Other LspDiagnostic highlights link to this by default (except Underline)
-    LspDiagnosticsDefaultWarning         { fg = hsl("#ffdd88") }, -- Used as the base highlight group. Other LspDiagnostic highlights link to this by default (except Underline)
-    LspDiagnosticsDefaultInformation     { fg = hsl("#4dd9f7") }, -- Used as the base highlight group. Other LspDiagnostic highlights link to this by default (except Underline)
-    LspDiagnosticsDefaultHint            { fg = hsl("#50f9c1") }, -- Used as the base highlight group. Other LspDiagnostic highlights link to this by default (except Underline)
+    LspDiagnosticsDefaultWarning         { fg = hsl('#fc9867') , -- Used as the base highlight group. Other LspDiagnostic highlights link to this by default (except Underline)
+    LspDiagnosticsDefaultInformation     { fg = hsl('#78dce8') }, -- Used as the base highlight group. Other LspDiagnostic highlights link to this by default (except Underline)
+    LspDiagnosticsDefaultHint            { fg = hsl('#ab9df2') }, -- Used as the base highlight group. Other LspDiagnostic highlights link to this by default (except Underline)
 
     -- LspDiagnosticsVirtualTextError       { }, -- Used for "Error" diagnostic virtual text
     -- LspDiagnosticsVirtualTextWarning     { }, -- Used for "Warning" diagnostic virtual text
