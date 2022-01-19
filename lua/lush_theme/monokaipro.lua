@@ -50,10 +50,10 @@ local theme = lush(function()
     Normal       { fg = hsl('#fcfcfa'), bg = hsl('#2d2a2e') }, -- normal text
     NormalFloat  { Normal }, -- Normal text in floating windows.
     NormalNC     { Normal }, -- normal text in non-current windows
-    Pmenu        { fg = hsl("#dddddd") }, -- Popup menu: normal item.
-    PmenuSel     { bg = hsl("#353535") }, -- Popup menu: selected item.
-    PmenuSbar    { bg = hsl("#404040") }, -- Popup menu: scrollbar.
-    -- PmenuThumb   { }, -- Popup menu: Thumb of the scrollbar.
+    Pmenu        { bg = hsl("#403e41"), gui = "bold" }, -- Popup menu: normal item.
+    PmenuSel     { fg = hsl("#ffd866"), bg = Pmenu.bg.lighten(15) }, -- Popup menu: selected item.
+    PmenuSbar    { bg = Pmenu.bg }, -- Popup menu: scrollbar.
+    PmenuThumb   { bg = Pmenu.bg.lighten(15) }, -- Popup menu: Thumb of the scrollbar.
     -- Question     { }, -- |hit-enter| prompt and yes/no questions
     -- QuickFixLine { }, -- Current |quickfix| item in the quickfix window. Combined with |hl-CursorLine| when the cursor is there.
     Search       { gui = "underline" }, -- Last search pattern highlighting (see 'hlsearch').  Also used for similar items that need to stand out.
