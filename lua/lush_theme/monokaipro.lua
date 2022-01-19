@@ -39,7 +39,7 @@ local theme = lush(function()
     IncSearch    { bg = hsl("#363636").lighten(10), gui = "bold" }, -- 'incsearch' highlighting; also used for the text replaced with ":s///c"
     Substitute   { IncSearch }, -- |:substitute| replacement text highlighting
     LineNr       { fg = hsl("#5b595c"), bg = Normal.bg }, -- Line number for ":number" and ":#" commands, and when 'number' or 'relativenumber' option is set.
-    CursorLineNr { fg = hsl("#c1c0c0"), bg = hsl("#363636") }, -- Like LineNr when 'cursorline' or 'relativenumber' is set for the cursor line.
+    CursorLineNr { fg = hsl("#ffd866"), bg = hsl('#2d2a2e').lighten(10) }, -- Like LineNr when 'cursorline' or 'relativenumber' is set for the cursor line.
     MatchParen   { gui = "underline" }, -- The character under the cursor or just before it, if it is a paired bracket, and its match. |pi_paren.txt|
     ModeMsg      { CursorLineNr }, -- 'showmode' message (e.g., "-- INSERT -- ")
     -- MsgArea      { }, -- Area for messages and cmdline
