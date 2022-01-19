@@ -36,7 +36,7 @@ local theme = lush(function()
     Folded       { fg = hsl("#cdcdcd"), bg = hsl("#444444") }, -- line used for closed folds
     FoldColumn   { Folded }, -- 'foldcolumn'
     SignColumn   { bg = Normal.bg }, -- column where |signs| are displayed
-    IncSearch    { bg = hsl("#363636") }, -- 'incsearch' highlighting; also used for the text replaced with ":s///c"
+    IncSearch    { bg = hsl("#363636").lighten(10), gui = "bold" }, -- 'incsearch' highlighting; also used for the text replaced with ":s///c"
     Substitute   { IncSearch }, -- |:substitute| replacement text highlighting
     LineNr       { fg = hsl("#5b595c"), bg = Normal.bg }, -- Line number for ":number" and ":#" commands, and when 'number' or 'relativenumber' option is set.
     CursorLineNr { fg = hsl("#c1c0c0"), bg = hsl("#363636") }, -- Like LineNr when 'cursorline' or 'relativenumber' is set for the cursor line.
@@ -80,17 +80,17 @@ local theme = lush(function()
     -- default,
     -- Uncomment and edit if you want more specific syntax highlighting.
 
-    Constant       { fg = hsl("#ab9df2") }, -- (preferred) any constant
-    String         { fg = hsl("#ffd866") }, --   a string constant: "this is a string"
-    Character      { fg = String.fg.lighten(50) }, --  a character constant: 'c', '\n'
+    Constant       { fg = hsl("#ab9df2"), gui = "bold"}, -- (preferred) any constant
+    String         { fg = hsl("#ffd866"), gui = "bold"}, --   a string constant: "this is a string"
+    Character      { fg = String.fg.lighten(50), gui = "bold" }, --  a character constant: 'c', '\n'
     Number         { Constant }, --   a number constant: 234, 0xff
     Boolean        { Constant }, --  a boolean constant: TRUE, false
     Float          { Number }, --    a floating point constant: 2.3e10
 
-    Identifier     { fg = hsl('#78dce8') }, -- (preferred) any variable name
-    Function       { fg = hsl("#a9dc76") }, -- function name (also: methods for classes)
+    Identifier     { fg = hsl('#78dce8'), gui = "bold" }, -- (preferred) any variable name
+    Function       { fg = hsl("#a9dc76"), gui = "bold" }, -- function name (also: methods for classes)
 
-    Statement      { fg = hsl('#ff6188') }, -- (preferred) any statement
+    Statement      { fg = hsl('#ff6188'), gui = "bold" }, -- (preferred) any statement
     -- Conditional    { }, --  if, then, else, endif, switch, etc.
     -- Repeat         { }, --   for, do, while, etc.
     -- Label          { }, --    case, default, etc.
@@ -98,13 +98,13 @@ local theme = lush(function()
     -- Keyword        { }, --  any other keyword
     -- Exception      { }, --  try, catch, throw
 
-    PreProc        { fg = Statement.fg.lighten(20) }, -- (preferred) generic Preprocessor
+    PreProc        { fg = Statement.fg.lighten(20), gui = "bold" }, -- (preferred) generic Preprocessor
     -- Include        { }, --  preprocessor #include
     -- Define         { }, --   preprocessor #define
     -- Macro          { }, --    same as Define
     -- PreCondit      { }, --  preprocessor #if, #else, #endif, etc.
 
-    Type           { fg = hsl('#78dce8').darken(20) }, -- (preferred) int, long, char, etc.
+    Type           { fg = hsl('#78dce8').darken(20), gui = "bold"}, -- (preferred) int, long, char, etc.
     -- StorageClass   { }, -- static, register, volatile, etc.
     -- Structure      { }, --  struct, union, enum, etc.
     -- Typedef        { }, --  A typedef
@@ -208,15 +208,15 @@ local theme = lush(function()
     -- TSVariable           { };    -- Any variable name that does not have another highlight.
     -- TSVariableBuiltin    { };    -- Variable names that are defined by the languages, like `this` or `self`.
 
-    -- TSTag                { };    -- Tags like html tag names.
-    -- TSTagDelimiter       { };    -- Tag delimiter like `<` `>` `/`
-    -- TSText               { };    -- For strings considered text in a markup language.
+    TSTag                { Statement };    -- Tags like html tag names.
+    TSTagDelimiter       { TSTag };    -- Tag delimiter like `<` `>` `/`
+    -- TSText               {  };    -- For strings considered text in a markup language.
     -- TSEmphasis           { };    -- For text to be represented with emphasis.
     -- TSUnderline          { };    -- For text to be represented with an underline.
     -- TSStrike             { };    -- For strikethrough text.
     -- TSTitle              { };    -- Text that is part of a title.
     -- TSLiteral            { };    -- Literal text.
-    -- TSURI                { };    -- Any URI like a link or email.
+    TSURI                { gui = "underline, bold" };    -- Any URI like a link or email.
     --
     -- Other highlights
     MinimapCurrentLine { fg = hsl("#88ff88") }, -- wfxr/minimap.vim
