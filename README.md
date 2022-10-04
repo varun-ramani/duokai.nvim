@@ -2,6 +2,8 @@
 A Lua implementation of the [Monokai Pro](https://monokai.pro) colorscheme for Neovim. 
 Created using [Lush](https://github.com/rktjmp/lush.nvim), and as such, depends on Lush.
 
+![Screenshot](./screenshot.png)
+
 ## Installation with Packer
 Simply `use` both `monokaipro.nvim` and `lush.nvim` in your Packer config, making sure that `lush.nvim` appears before `monokaipro.nvim`.
 ```lua
