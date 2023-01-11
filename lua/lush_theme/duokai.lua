@@ -223,6 +223,9 @@ local theme = lush(function()
     GitSignsAdd { bg = hsl("#363636"), fg = hsl("#88ff88") },    -- lewis6991/gitsigns.nvim
     GitSignsChange { bg = hsl("#363636"), fg = hsl("#ffdd88") },    -- lewis6991/gitsigns.nvim
     GitSignsDelete { bg = hsl("#363636"), fg = hsl("#ff8888") },    -- lewis6991/gitsigns.nvim
+
+    FidgetTitle  { String },
+    FidgetTask { Comment },
   }
 end)
 
